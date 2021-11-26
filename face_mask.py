@@ -16,10 +16,10 @@ while True:
         test_image = image.load_img('temp.jpg', target_size=(150, 150, 3))
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
-        pred = model.predict_classes(test_image)[0][0]
+        pred = model.predict(test_image)[0][0]
         if pred == 1:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
-            cv2.putText(img, 'KHÔNG KHAU TRANG', ((x + w) // 2, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+            cv2.putText(img, 'KHONG KHAU TRANG', ((x + w) // 2, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
         else:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
             cv2.putText(img, 'CO KHAU TRANG', ((x + w) // 2, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
